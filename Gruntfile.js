@@ -32,11 +32,24 @@ module.exports = function (grunt) {
     yeoman: appConfig,
 
     // Watches files for changes and runs tasks based on the changed files
+       less:{
+    	development: {
+         files: {
+           'app/styles/new.css': 'app/styles/new.less'
+         }
+      }
+    },
+
     watch: {
       bower: {
         files: ['bower.json'],
         tasks: ['wiredep']
       },
+      less:{
+	    	  files: ['styles/fyr.css'],
+          tasks: ['less']
+      },
+
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all', 'newer:jscs:all'],
@@ -466,7 +479,6 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
-    'cdnify',
     'cssmin',
     'uglify',
     'filerev',

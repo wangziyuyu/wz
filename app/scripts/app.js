@@ -9,17 +9,13 @@
  * Main module of the application.
  */
 angular
-  .module('twoApp', ["ui.router"]).controller('con',['$scope','$http',function ($scope,$http) {
-	  
-	}]).config(['$stateProvider','$urlRouterProvider',function ($stateProvider,$urlRouterProvider){
-			$stateProvider.state('new1',{
-				url:'/new1',
-				templateUrl:'views/main.html',
-				controller:'MainCtrl'
-			}).state('new2',{
-				url:'/new2',
-				templateUrl:'views/new.html',
-				controller:'new'
-			})
-		}])
-
+  .module('aaaaApp', ['wzy'])
+  .controller('cont',function($scope,$http){
+  	$http({
+			method:'get',
+			url:'http://www.somenote.cn:1510/test'
+		}).success(function(e){
+			$scope.medata=e;
+		})
+  })
+  
